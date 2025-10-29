@@ -28,4 +28,21 @@ public class CustomListTest {
         // Return false if city does not exist
         assertFalse(list.deleteCity(calgary));
     }
+
+    @Test
+    public void testCountCities() {
+        CustomList list = new CustomList();
+        City calgary = new City("Calgary", "AB");
+        City edmonton = new City("Edmonton", "AB");
+
+        assertEquals(list.countCities(), 0);
+        list.addCity(calgary);
+        assertEquals(list.countCities(), 1);
+        list.addCity(edmonton);
+        assertEquals(list.countCities(), 2);
+        list.deleteCity(edmonton);
+        assertEquals(list.countCities(), 1);
+        list.deleteCity(calgary);
+        assertEquals(list.countCities(), 0);
+    }
 }
